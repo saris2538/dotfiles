@@ -45,4 +45,10 @@ jobs:
           arch: ${{ matrix.arch }}
       - uses: julia-actions/cache@v1
       - uses: julia-actions/julia-buildpkg@v1
+      - name: "Setup test environment"
+        shell: bash -l {0}
+        run: |
+          ./install.sh
+          source ~/.bash_profile
+          alias lla > lla.txt
       - uses: julia-actions/julia-runtest@v1
